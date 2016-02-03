@@ -6,7 +6,7 @@
 
 `2016-02-04 00:11:14`
 
-1.10 - 简单工厂模式 - `Factory.playground`
-2.4 - 策略模式 - `Strategy.playground`
-2.6 - 策略与简单工厂结合 - `Combine.playground`
+1.10 - 简单工厂模式 - `Factory.playground`  
+2.4 - 策略模式 - `Strategy.playground`  
+2.6 - 策略与简单工厂结合 - `Combine.playground`  
 
