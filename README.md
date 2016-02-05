@@ -7,9 +7,9 @@
 
 ### `2016-02-04 00:11:14`
 
-#### 1.10 - 简单工厂模式 - `Factory.playground`  
+#### 1.10 - 简单工厂模式 - `SimpleFactory.playground`  
 
-用一个类实现创建实例的过程。
+用且只用一个类实现创建实例的过程。
 
 #### 2.4 - 策略模式 - `Strategy.playground`  
 
@@ -33,3 +33,13 @@
 #### 7.5 - 代理模式 - `Proxy.playground`
 
 使用协议规范接口，使用委托控制访问。
+
+### `2016-02-05 11:12:59`
+
+简单工厂的名字改成了`SimpleFactory`
+
+工厂类才是`Factory`
+
+#### 8.5 - 雷锋工厂 - `Factory.playground`
+
+将功能更改放到了客户端当中。
