@@ -1,64 +1,120 @@
 //协议用于规范接口
-protocol GiveGift {
+protocol Pursuit {
     func GiveDolls()
     func GiveFlowes()
     func GiveChocolate()
+    func kiss()
 }
-
+/// 定义一个妹纸的类
 class SchoolGirl {
-    private var name:String = ""
-    func get() -> String {
-        return self.name
-    }
-    func set(name:String) {
+    private var name:String
+    private var love = 0
+    init (name:String) {
         self.name = name
     }
+    func getLove() -> Int {
+        return love
+    }
+    func GiveDolls() {
+        print("\(name)收到了送的娃娃")
+        ++love
+    }
+    func GiveFlowes() {
+        print("\(name)收到了你送的花")
+        ++love
+    }
+    func GiveChocolate() {
+        print("\(name)收到了你送的巧克力")
+        ++love
+    }
+    func kiss() {
+        print("你亲到了\(name)!")
+        love = 50
+    }
+
 }
 
-//原类，委托者，就是为了保护它的访问权
-class Pursuit:GiveGift {
-    var mm = SchoolGirl()
-    func Pursuit(mm:SchoolGirl) {
+//定义追求者。
+class Boy:Pursuit {
+    private var name:String
+    private var mm:Pursuit?
+    init (name:String) {
+        self.name = name
+    }
+    func pursuit(mm:Pursuit) {
         self.mm = mm
     }
     func GiveDolls() {
-        print("\(mm.name),送你娃娃")
+        print("你企图送妹纸娃娃：",terminator:"")
+        mm?.GiveDolls()
     }
     func GiveFlowes() {
-        print("\(mm.name),送你花")
+        print("你企图送妹花：",terminator:"")
+        mm?.GiveFlowes()
     }
     func GiveChocolate() {
-        print("\(mm.name),送你巧克力")
+        print("你企图送妹纸巧克力：",terminator:"")
+        mm?.GiveChocolate()
     }
+    func kiss() {
+        print("你企图法式湿吻妹纸：",terminator:"")
+        mm?.kiss()
+    }
+
 }
 
-//委托的角色用于控制访问，这里并没有定义各个方法的功能
-class Proxy:GiveGift {
-    var gg = Pursuit()
-    func Proxy(mm:SchoolGirl) {
-        //实例化原类被放在委托中，保护了原类安全
-        gg = Pursuit()
-        gg.Pursuit(mm)
+/// 定义一个代理，用来保护妹纸,它控制色狼的动作；所有的追求行为都要通过代理来过滤。
+class MMProxy:Pursuit {
+    private let mm:SchoolGirl
+    init (mm:SchoolGirl) {
+        self.mm = mm
     }
+    
     func GiveDolls() {
-        gg.GiveDolls()
+        mm.GiveDolls()
     }
     func GiveFlowes() {
-        gg.GiveFlowes()
+        mm.GiveFlowes()
     }
+    /**
+     如果好感度不够高巧克力甩你一脸。
+     */
     func GiveChocolate() {
-        gg.GiveChocolate()
+        if mm.getLove() < 2 {
+            print("Not now~")
+        } else {
+            mm.GiveChocolate()
+        }
+    }
+    /**
+     如果好感度不够高，就不能亲亲直接扭送公安局！
+     */
+    func kiss() {
+        if mm.getLove() < 3 {
+            print("流氓，报警!")
+        } else {
+            mm.kiss()
+        }
     }
 }
 
 
 
-let jiaojiao = SchoolGirl()
-jiaojiao.name = "李娇娇"
+let jiaojiao = SchoolGirl(name: "李娇娇")
 
-//实例化一个代理角色
-let daili = Proxy()
-daili.Proxy(jiaojiao)
-daili.GiveFlowes()
-daili.GiveDolls()
-daili.GiveChocolate()
+let boy = Boy(name: "香蕉")
+
+let mm = MMProxy(mm: jiaojiao)
+
+boy.pursuit(mm)
+boy.kiss()
+boy.GiveChocolate()
+boy.GiveDolls()
+boy.kiss()
+boy.GiveFlowes()
+boy.kiss()
+boy.GiveChocolate()
+boy.kiss()
+
+
+
