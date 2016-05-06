@@ -38,11 +38,8 @@ var CashReturn = {
             this.moneyCondition = moneyCondition;
         };
         cashReturn.acceptCash = function(money) {
-            if (money >= this.moneyCondition) {
-                return (money - ~~(money/this.moneyCondition)*this.moneyReturn);
-            } else {
-                return money;
-            }
+            var judge = (money >= this.moneyCondition);
+            return (judge ? (money - ~~(money/this.moneyCondition)*this.moneyReturn) : money);
         };
         return cashReturn;
     }

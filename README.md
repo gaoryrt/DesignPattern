@@ -2,6 +2,7 @@
 
 《大话设计模式》的swift实现，在`swift`文件夹中  
 《大话设计模式》的javascript实现，在`JS`文件夹中  
+download and read code
 
 ***
 ## Log
