@@ -47,7 +47,7 @@ var CashReturn = {
     }
 };
 
-// 提前在简单工厂中实例化
+// 在简单工厂中实例化
 var CashFactory = {
     creatNew: function(){
         var cashFactory = {};
