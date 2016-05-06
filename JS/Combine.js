@@ -47,11 +47,11 @@ var CashReturn = {
     }
 };
 
-var CashContext = {
+var CashContex = {
     creatNew: function() {
-        var cashContext = {};
-        cashContext.cs = CashSuper.creatNew();
-        cashContext.cashContext = function(type) {
+        var cashContex = {};
+        cashContex.cs = CashSuper.creatNew();
+        cashContex.cashContex = function(type) {
             switch (type) {
                 case "normal":
                     var cs0 = CashNormal.creatNew();
@@ -70,16 +70,16 @@ var CashContext = {
                 default: break;
             }
         };
-        cashContext.getResult = function(money) {
+        cashContex.getResult = function(money) {
             return this.cs.acceptCash(money);
         };
-        return cashContext;
+        return cashContex;
     }
 };
 
 OK = function(type, totalPrice) {
-    var cc = CashContext.creatNew();
-    cc.cashContext(type);
+    var cc = CashContex.creatNew();
+    cc.cashContex(type);
     console.log(totalPrice, cc.getResult(totalPrice));
 };
 
