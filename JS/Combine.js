@@ -52,7 +52,6 @@ var CashContext = {
         var cashContext = {};
         cashContext.cs = CashSuper.creatNew();
         cashContext.cashContext = function(type) {
-            var cs;
             switch (type) {
                 case "normal":
                     var cs0 = CashNormal.creatNew();
