@@ -2,7 +2,7 @@
 var CashSuper = {
     creatNew: function(){
         var cashSuper = {};
-        cashSuper.acceptCash = function(money){return money;};
+        cashSuper.acceptCash = function(money) {return money;};
         return cashSuper;
     }
 };
@@ -34,47 +34,54 @@ var CashReturn = {
         cashReturn.moneyCondition = 0;
         cashReturn.moneyReturn = 0;
         cashReturn.cashReturn = function(moneyCondition, moneyReturn) {
-            this.moneyReturn = moneyReturn;
             this.moneyCondition = moneyCondition;
+            this.moneyReturn = moneyReturn;
         };
         cashReturn.acceptCash = function(money) {
+            // 三元运算符的条件
             var judge = (money >= this.moneyCondition);
+            // 两个波浪号是取整
             return (judge ? (money - ~~(money/this.moneyCondition)*this.moneyReturn) : money);
         };
         return cashReturn;
     }
 };
 
-// 提前在简单工厂中实例化
-var CashFactory = {
-    creatNew: function(){
-        var cashFactory = {};
-        cashFactory.creatCashAccept = function(type) {
+var CashContext = {
+    creatNew: function() {
+        var cashContext = {};
+        cashContext.cs = CashSuper.creatNew();
+        cashContext.cashContext = function(type) {
             var cs;
             switch (type) {
                 case "normal":
-                    cs = CashNormal.creatNew();break;
+                    var cs0 = CashNormal.creatNew();
+                    this.cs = cs0;
+                    break;
                 case "rebate":
-                    cs = CashRebate.creatNew();
-                    cs.cashRebate(0.88);
+                    var cs1 = CashRebate.creatNew();
+                    cs1.cashRebate(0.88);
+                    this.cs = cs1;
                     break;
                 case "return":
-                    cs = CashReturn.creatNew();
-                    cs.cashReturn(299, 88);
+                    var cs2 = CashReturn.creatNew();
+                    cs2.cashReturn(299, 88);
+                    this.cs = cs2;
                     break;
                 default: break;
             }
-            return cs;
         };
-        return cashFactory;
+        cashContext.getResult = function(money) {
+            return this.cs.acceptCash(money);
+        };
+        return cashContext;
     }
 };
 
-// 收银程序
 OK = function(type, totalPrice) {
-    var csuper = CashFactory.creatNew().creatCashAccept(type);
-    var total = csuper.acceptCash(totalPrice);
-    console.log(totalPrice,total);
+    var cc = CashContext.creatNew();
+    cc.cashContext(type);
+    console.log(totalPrice, cc.getResult(totalPrice));
 };
 
 OK("normal", 800);
