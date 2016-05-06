@@ -47,7 +47,7 @@ var CashReturn = {
     }
 };
 
-// 在简单工厂中实例化
+// 在简单工厂中实例化，定义参数
 var CashFactory = {
     creatNew: function(){
         var cashFactory = {};
@@ -72,7 +72,7 @@ var CashFactory = {
     }
 };
 
-// 收银程序
+// 只管输出
 OK = function(type, totalPrice) {
     var csuper = CashFactory.creatNew().creatCashAccept(type);
     var total = csuper.acceptCash(totalPrice);

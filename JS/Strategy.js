@@ -48,6 +48,7 @@ var CashReturn = {
 };
 
 // 前面都跟简单工厂一样，下面把工厂分开了,耦合性进一步降低了。
+// 这里专注实例化和返回值
 var CashContex = {
     creatNew: function() {
         var cashContex = {};
@@ -62,6 +63,7 @@ var CashContex = {
     }
 };
 
+// 在OK中定义相关参数，然后输出
 OK = function(type, totalPrice) {
     var cc = CashContex.creatNew();
     switch (type) {

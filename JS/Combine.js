@@ -47,6 +47,7 @@ var CashReturn = {
     }
 };
 
+// 实例化和定义参数，返回值放在一起
 var CashContex = {
     creatNew: function() {
         var cashContex = {};
@@ -76,6 +77,7 @@ var CashContex = {
         return cashContex;
     }
 };
+
 
 OK = function(type, totalPrice) {
     var cc = CashContex.creatNew();
