@@ -38,7 +38,9 @@ var CashReturn = {
             this.moneyCondition = moneyCondition;
         };
         cashReturn.acceptCash = function(money) {
+            // 三元运算符的条件
             var judge = (money >= this.moneyCondition);
+            // 两个波浪号是取整
             return (judge ? (money - ~~(money/this.moneyCondition)*this.moneyReturn) : money);
         };
         return cashReturn;
