@@ -66,5 +66,5 @@ func OK(type:String , totalprice: Double) {
 //开始收银
 var name = ["normal","rebate","return"]
 for i in name{
-    OK(i, totalprice: 400)
+    OK(i, totalprice: 800)
 }
