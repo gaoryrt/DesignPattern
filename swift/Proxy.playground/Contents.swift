@@ -17,15 +17,15 @@ class SchoolGirl {
     }
     func GiveDolls() {
         print("\(name)收到了送的娃娃")
-        ++love
+        love += 1
     }
     func GiveFlowes() {
         print("\(name)收到了你送的花")
-        ++love
+        love += 1
     }
     func GiveChocolate() {
         print("\(name)收到了你送的巧克力")
-        ++love
+        love += 1
     }
     func kiss() {
         print("你亲到了\(name)!")
