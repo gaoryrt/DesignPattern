@@ -9,6 +9,7 @@ var Person = {
     }
 };
 
+// 装饰品的父类
 var Finery = {
     creatNew: function(name) {
         var finery = Person.creatNew(name);
