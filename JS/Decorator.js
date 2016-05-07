@@ -12,7 +12,6 @@ var Person = {
 var Finery = {
     creatNew: function(name) {
         var finery = Person.creatNew(name);
-        finery.component = Person.creatNew();
         finery.decorate = function(component) {
             this.component = component;
         };
@@ -26,7 +25,10 @@ var Finery = {
 var TShirt = {
     creatNew: function(name) {
         var tShirt = Finery.creatNew(name);
-        console.log("txu");
+        tShirt.show = function(){
+            console.log("T恤");
+            tShirt.component.show();
+        };
         return tShirt;
     }
 };
@@ -34,7 +36,10 @@ var TShirt = {
 var Trouser = {
     creatNew: function(name) {
         var trouser = Finery.creatNew(name);
-        console.log("maoyi");
+        trouser.show = function(){
+            console.log("毛衣");
+            trouser.component.show();
+        };
         return trouser;
     }
 };
@@ -42,7 +47,10 @@ var Trouser = {
 var Shoes = {
     creatNew: function(name) {
         var shoes = Finery.creatNew(name);
-        console.log("xiezi");
+        shoes.show = function(){
+            console.log("鞋子");
+            shoes.component.show();
+        };
         return shoes;
     }
 };
