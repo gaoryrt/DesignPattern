@@ -20,7 +20,7 @@ class Finery:Person {
     //注意这里的操作是被提出到了Person类中的Show()
     override func Show() {
         component.Show()
-        }
+    }
 }
 
 //三个实例化的装饰

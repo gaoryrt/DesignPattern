@@ -1,20 +1,22 @@
 var Person = {
-    creatNew: function(name){
+    creatNew: function(name) {
         var person = {};
         var staticName = name;
-        person.show = function(){console.log(staticName);};
+        person.show = function() {
+            console.log(staticName);
+        };
         return person;
     }
 };
 
 var Finery = {
-    creatNew: function(name){
+    creatNew: function(name) {
         var finery = Person.creatNew(name);
         finery.component = Person.creatNew();
         finery.decorate = function(component) {
             this.component = component;
         };
-        finery.show = function(){
+        finery.show = function() {
             this.component.show();
         };
         return finery;
@@ -22,7 +24,7 @@ var Finery = {
 };
 
 var TShirt = {
-    creatNew: function(name){
+    creatNew: function(name) {
         var tShirt = Finery.creatNew(name);
         console.log("txu");
         return tShirt;
