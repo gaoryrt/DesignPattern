@@ -42,3 +42,4 @@ download and read code
 -   js 工厂模式
 -   js 原型模式
 -   js 模板方法模式
+-   js 外观模式
